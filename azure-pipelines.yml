@@ -72,7 +72,6 @@ stages:
 
     - publish: '$(Build.ArtifactStagingDirectory)'
       artifact: drop
-
 - stage: 'Dev'
   displayName: 'Deploy to the Dev environment'
   dependsOn: Build
@@ -98,7 +97,7 @@ stages:
               appType: webAppLinux
 - stage: 'Test'
   displayName: 'Deploy to the test environment'
-  dependsOn: Dev
+  dependsOn: 'Dev'
   #condition: eq(variables['Build.Reason'], 'Schedule')
   jobs:
   - deployment: Deploy
